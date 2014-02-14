@@ -16,6 +16,8 @@ shopt -s checkwinsize
 
 export TERM="xterm-256color"
 
+eval "$(fasd --init auto)"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -24,7 +26,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 export PYTHONPATH=$PYTHONPATH:~/Development/google_appengine
 #export PATH=/usr/local/n/versions/0.8.21/bin:$PATH
-export PATH=$PATH:~/Scripts/:
+export PATH=$PATH:~/scripts/:
 export PATH=$PATH:~/Development/google_appengine:
 export PATH=$PATH:/opt/android-sdk/tools:/opt/android-sdk/tools:
 export PATH=$PATH:~/Development/heroku-client/bin:
@@ -46,6 +48,11 @@ alias vi='vim'
 #alias vi='vim -p'
 #alias vim='vim -p'
 
+alias ackpy='ack --smart-case --python'
+alias ackjs='ack --smart-case --js'
+alias ackhtml='ack --smart-case --html'
+alias ackcss='ack --smart-case --css --sass --less'
+
 # modified commands
 alias diff='colordiff'              # requires colordiff package
 alias grep='grep -n --color=auto'
@@ -65,20 +72,20 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 alias pg='ps -Af | grep $1'         # requires an argument (note: /usr/bin/pg is installed by the util-linux package; maybe a different alias name should be used)
 
 # privileged access
-if [ $UID -ne 0 ]; then
-    alias sudo='sudo '
-    alias scat='sudo cat'
-    alias svim='sudo vim'
-    alias svi='sudo vim'
-    alias root='sudo su'
-    alias reboot='sudo reboot'
-    alias halt='sudo halt'
-    alias update='sudo pacman -Su'
-    alias netcfg='sudo netcfg2'
-fi
+#if [ $UID -ne 0 ]; then
+#    alias sudo='sudo '
+#    alias scat='sudo cat'
+#    alias svim='sudo vim'
+#    alias svi='sudo vim'
+#    alias root='sudo su'
+#    alias reboot='sudo reboot'
+#    alias halt='sudo halt'
+#    alias update='sudo pacman -Su'
+#    alias netcfg='sudo netcfg2'
+#fi
 
 # ls
-#alias ls='ls --color=auto'
+alias ls='ls --color=auto'
 alias ls='ls -hF --color=auto'
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -l'
