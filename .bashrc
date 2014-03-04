@@ -26,7 +26,10 @@ shopt -s checkwinsize
 
 export TERM="xterm-256color"
 
-eval "$(fasd --init auto)"
+if command -v fasd >/dev/null 2>&1;
+then
+    eval "$(fasd --init auto)"
+fi
 
 
 # Virtualenv wrapper
