@@ -1,9 +1,14 @@
 #
 # ~/.bashrc
 #
+#[[ -s ".mybashrc" ]] && source ".mybashrc" ]]
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Debian systems usualy don't include these paths
+export PATH=$PATH:/sbin/
+export PATH=$PATH:/usr/sbin/
 
 # Bash settings
 set -o vi
@@ -40,8 +45,8 @@ VIRTUALENV_SCRIPT=
 
 # Paths
 #export PYTHONPATH=$PYTHONPATH:~/Development/google_appengine
-export PATH=$PATH:~/scripts/:
-#export PATH=$PATH:~/.gem/ruby/2.0.0/bin:
+export PATH=$PATH:~/scripts/
+#export PATH=$PATH:~/.gem/ruby/2.0.0/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 
 
