@@ -77,10 +77,9 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 alias pg='ps -Af | grep $1'         # requires an argument (note: /usr/bin/pg is installed by the util-linux package; maybe a different alias name should be used)
 
 # ls
-alias ls='ls --color=auto'
 alias ls='ls -hF --color=auto'
 alias lr='ls -R'                    # recursive ls
-alias ll='ls -l'
+alias ll='ls -lhF'
 alias la='ll -A'
 alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
