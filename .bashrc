@@ -2,41 +2,11 @@
 # ~/.bashrc
 #
 
-source /etc/profile
-#source /usr/etc/profile.d/autojump.bash
-
-# VI mode
-set -o vi
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#PS1='[\u@\h \W]\$ '
-shopt -s checkwinsize
-
-export TERM="xterm-256color"
-
-eval "$(fasd --init auto)"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-export WORKON_HOME="$HOME/.virtualenvs"
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-source /usr/bin/virtualenvwrapper.sh
-
-export PYTHONPATH=$PYTHONPATH:~/Development/google_appengine
-#export PATH=/usr/local/n/versions/0.8.21/bin:$PATH
-export PATH=$PATH:~/scripts/:
-export PATH=$PATH:~/Development/google_appengine:
-export PATH=$PATH:/opt/android-sdk/tools:/opt/android-sdk/tools:
-export PATH=$PATH:~/Development/heroku-client/bin:
-export PATH=$PATH:~/.gem/ruby/2.0.0/bin:
-#export PATH=$PATH:./node_modules/.bin:
-#export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-
+# Bash settings
+set -o vi
 # don't put duplicate lines or empty spaces in the history
 export HISTCONTROL=ignoreboth
 # combine multiline commands in history
@@ -44,9 +14,36 @@ shopt -s cmdhist
 # merge session histories
 shopt -s histappend
 
+
+# Sourcing
+[[ -s "/etc/profile" ]] && source "/etc/profile"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#PS1='[\u@\h \W]\$ '
+
+# Update shell size
+shopt -s checkwinsize
+
+export TERM="xterm-256color"
+
+eval "$(fasd --init auto)"
+
+
+# Virtualenv wrapper
+export WORKON_HOME="$HOME/.virtualenvs"
+VIRTUALENV_SCRIPT=
+[[ -s "/usr/bin/virtualenvwrapper.sh" ]] && source "/usr/bin/virtualenvwrapper.sh"
+
+
+# Paths
+#export PYTHONPATH=$PYTHONPATH:~/Development/google_appengine
+export PATH=$PATH:~/scripts/:
+#export PATH=$PATH:~/.gem/ruby/2.0.0/bin:
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+
+
+# Alias
 alias vi='vim'
-#alias vi='vim -p'
-#alias vim='vim -p'
 
 alias ackpy='ack --smart-case --python'
 alias ackjs='ack --smart-case --js'
@@ -70,19 +67,6 @@ alias du1='du --max-depth=1'
 alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias pg='ps -Af | grep $1'         # requires an argument (note: /usr/bin/pg is installed by the util-linux package; maybe a different alias name should be used)
-
-# privileged access
-#if [ $UID -ne 0 ]; then
-#    alias sudo='sudo '
-#    alias scat='sudo cat'
-#    alias svim='sudo vim'
-#    alias svi='sudo vim'
-#    alias root='sudo su'
-#    alias reboot='sudo reboot'
-#    alias halt='sudo halt'
-#    alias update='sudo pacman -Su'
-#    alias netcfg='sudo netcfg2'
-#fi
 
 # ls
 alias ls='ls --color=auto'
